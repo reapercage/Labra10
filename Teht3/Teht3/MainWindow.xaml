@@ -14,12 +14,11 @@
                 <TextBlock x:Name="txbDraws" HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="Number of draws:" VerticalAlignment="Top"/>
             </StackPanel>
                 <StackPanel Width="190">
-                <ComboBox x:Name="cbGame" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="120">
-                        <ComboBoxItem Content="lotto"/>
-                        <!-- <ComboBoxItem x:Name="lotto" >Lotto</ComboBoxItem>
-                    <ComboBoxItem>Viking Lotto</ComboBoxItem>
-                    <ComboBoxItem>Eurojackpot</ComboBoxItem>-->
-                </ComboBox>
+                    <ComboBox x:Name="cbGame" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="120">
+                        <ComboBoxItem x:Name="lottoItem" Content="Lotto"/>
+                        <ComboBoxItem x:Name="vikingItem" Content="Viking Lotto"/>
+                        <ComboBoxItem x:Name="euroItem" Content="Eurojackpot"/>
+                    </ComboBox>
                 <TextBox x:Name="txtDraws" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                 </StackPanel>
         </StackPanel>
