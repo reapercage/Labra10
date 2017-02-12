@@ -35,15 +35,12 @@ namespace Teht3
         int rownumbers;
         int rownumbersMinus;
         int rowcount;
-
-        int parInt;
-        bool isNumber = false;
-        int n;
-        string howManyLetters;
-        char[] checkArray;
+        bool europot;
+        string asdf;
 
         private void btnDraw_Click(object sender, RoutedEventArgs e)
         {
+            europot = false;
             if (emptyItem.IsSelected)
             {
 
@@ -56,95 +53,30 @@ namespace Teht3
                     lotTruth = new bool[40];
                     lotteryNumbers = 40;
                     rownumbers = 7;
-                    //txbRows.Text = "Lotto\n";
                 }
                 else if (vikingItem.IsSelected)
                 {
                     lotTruth = new bool[49];
                     lotteryNumbers = 49;
                     rownumbers = 6;
-                    //txbRows.Text = "Viking Lotto\n";
                 }
                 else if (euroItem.IsSelected)
                 {
                     lotTruth = new bool[51];
                     lotteryNumbers = 51;
                     rownumbers = 7;
-                    //txbRows.Text = "Eurojackpot\n";
+                    europot = true;
                 }
-
                 //arvotaan numerot
-                if (txtDraws.Text == "")
+                if (txtDraws.Text != "")
                 {
-                    draws = 0;
+                    draws = System.Convert.ToInt32(txtDraws.Text);
+                    //kaatuu jos null tai jtn
+                    Lotto lottery = new Lotto();
+                    txbRows.Text = lottery.Game(lotteryNumbers, rownumbers, draws, europot);
                 }
                 //else if() sisältää muuta kuin kokonaisluvun
-                else
-                {
-                    //draws = Int32.Parse(txbRows.Text);
-                }
-                //kaatuu jos null
-                draws = System.Convert.ToInt32(txtDraws.Text);
-                lot = new int[draws, rownumbers];
 
-                for (int z = 0; z < draws; z++)
-                {
-                    for (int i = 0; i < rownumbers; i++)
-                    {
-                        x = rnd.Next(1, lotteryNumbers);
-                        while (lotTruth[x] == true)
-                        {
-                            x = rnd.Next(1, lotteryNumbers);
-                        }
-                        lot[z, i] = x;
-                        lotTruth[x] = true;
-                    }
-                    for (int i = 0; i < lotteryNumbers; i++)
-                    {
-                        lotTruth[i] = false;
-                    }
-                }
-
-                //tulostus
-                rowcount = 1;
-                rownumbersMinus = rownumbers - 1;
-                txbRows.Text = "";
-                for (int i = 0; i < draws; i++)
-                {
-                    for (int a = 0; a < rownumbers; a++)
-                    {
-                        if (a == 0)
-                        {
-                            txbRows.Text = txbRows.Text + "Row " + rowcount + ": ";
-                        }
-                        if (euroItem.IsSelected)
-                        {
-                            if (a == 5)
-                            {
-                                txbRows.Text = txbRows.Text + " + ";
-                            }
-                        }
-                        txbRows.Text = txbRows.Text + lot[i, a].ToString();
-                        if (a < rownumbersMinus)
-                        {
-                            if (euroItem.IsSelected && a == 4)
-                            {
-                            }
-                            else
-                            {
-                                txbRows.Text = txbRows.Text + ", ";
-                            }
-                        }
-                        else if (a == rownumbersMinus)
-                        {
-                            if(i != draws-1)
-                            {
-                                txbRows.Text = txbRows.Text + "\n";
-                            }
-                        }
-                    }
-                    rowcount++;
-                }
             }
             
         }
@@ -153,6 +85,7 @@ namespace Teht3
         {
             txbRows.Text = "";
             txtDraws.Text = "";
+            emptyItem.IsSelected = true;
         }
     }
 }
