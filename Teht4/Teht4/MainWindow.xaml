@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Teht4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="520">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="260">
+                <StackPanel>
+                    <TextBlock x:Name="txbLogo" TextWrapping="Wrap" Text="Hellfire purify Sauna: Perkele"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock x:Name="txbTemp" TextWrapping="Wrap" Text="Temperature:"/>
+                    <TextBlock x:Name="txbHumid" TextWrapping="Wrap" Text="Humidity:"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Width="255">
+                <StackPanel>
+                    <TextBox x:Name="textBox" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+                </StackPanel>
+                <StackPanel>
+                    
+                </StackPanel>
+                <StackPanel></StackPanel>
+                <StackPanel></StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
